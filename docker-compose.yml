@@ -1,0 +1,41 @@
+version: '3'
+services:
+  nginx:
+    build: 
+      context: ./docker/nginx/
+    ports: 
+      - "8000:80"
+    volumes: 
+      - .:/var/www/html
+    networks: 
+      - frontend
+      - backend
+  php-fpm:
+    build: 
+      context: ./docker/php-fpm/
+    volumes: 
+      - .:/var/www/html
+    env_file:
+      - .env-docker
+    networks: 
+      - backend
+  mysql:
+    image: mysql:5.7
+    environment: 
+      MYSQL_ROOT_PASSWORD: squapass
+      MYSQL_DATABASE: squadb
+    volumes:  
+      - ./data/mysql:/var/lib/mysql
+    networks: 
+      - backend
+  redis:
+    image: redis:alpine
+    environment:
+      REDIS_REPLICATION_MODE: master
+    volumes:
+     - ./data/redis:/var/lib/redis
+    networks:
+     - backend
+networks: 
+  backend:
+  frontend:
