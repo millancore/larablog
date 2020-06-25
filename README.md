@@ -41,6 +41,8 @@ docker-compose exec php-fpm php artisan migrate:fresh --seed
 
 # Use
 
+Open http://localhost:8000
+
 Admin login
    - Email: admin@squa.com
    - Pass: Squa123456
