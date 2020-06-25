@@ -34,8 +34,11 @@ services:
     depends_on:
       - mysql
       - redis
+    networks: 
+      - backend
   mysql:
-    image: mysql:5.7
+    build: 
+      context: ./docker/mysql
     environment: 
       MYSQL_ROOT_PASSWORD: squapass
       MYSQL_DATABASE: squadb
