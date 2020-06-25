@@ -75,7 +75,7 @@ class PostController extends Controller
         $post = $this->postRepository->getBySlug($slug);
 
         if(is_null($post)) {
-            return view('posts.notfound');
+            return response()->view('posts.notfound', [], 404);
         }
 
         return view('posts.show', ['post' => $post]);
