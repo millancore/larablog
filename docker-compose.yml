@@ -24,6 +24,16 @@ services:
       - redis
     networks:
       - backend
+  schedule:
+    build: 
+      context: ./docker/schedule
+    volumes: 
+      - .:/var/www/html
+    env_file:
+      - .env-docker
+    depends_on:
+      - mysql
+      - redis
   mysql:
     image: mysql:5.7
     environment: 
