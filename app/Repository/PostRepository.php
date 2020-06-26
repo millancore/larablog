@@ -2,11 +2,12 @@
 
 namespace App\Repository;
 
+use App\Contract\PostRepositoryInterface;
 use App\Model\Post;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 
-class PostRepository
+class PostRepository implements PostRepositoryInterface
 {
 
     /**
@@ -16,7 +17,7 @@ class PostRepository
      * @param uuid $userId
      * @return void
      */
-    public function create(array $data, $userId)
+    public function create(array $data, string $userId)
     {
         $post = new Post;
 
@@ -35,7 +36,7 @@ class PostRepository
      * @param uuid $userId
      * @return void
      */
-    public function allByUser($userId)
+    public function allByUser(string $userId)
     {
         return Post::where('user_id', $userId)
                     ->orderBy('publication_date', 'desc')

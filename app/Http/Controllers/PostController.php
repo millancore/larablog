@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Contract\PostRepositoryInterface;
 use App\Http\Requests\PostRequest;
-use App\Repository\PostRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
 {   
     protected $postRepository;
 
-    public function __construct(PostRepository $postRepository)
+    public function __construct(PostRepositoryInterface $postRepository)
     {
         $this->postRepository = $postRepository;
         $this->middleware('auth')->only(['create', 'store']);
@@ -72,12 +73,17 @@ class PostController extends Controller
      */
     public function show(string $slug)
     {
+        if($post = Redis::hgetall($slug)) {
+            return view('posts.show', ['post' => (object) $post]);
+        }
+
         $post = $this->postRepository->getBySlug($slug);
 
         if(is_null($post)) {
             return response()->view('posts.notfound', [], 404);
         }
 
+        Redis::hmset($slug, $post->toArray());
         return view('posts.show', ['post' => $post]);
     }
 

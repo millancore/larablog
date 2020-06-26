@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\Response;
 use Tests\TestCase;
 
-class PostTest extends TestCase
+class PostControllerTest extends TestCase
 {
     use DatabaseMigrations;
 
