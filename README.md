@@ -36,7 +36,7 @@ npm install
 
 ### Deploy on Docker
 ```bash
-docker-compose up
+docker-compose up  --build
 ```
 
 Migrate database and seeds
