@@ -6,6 +6,7 @@ use App\User;
 use App\Model\Post;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\Response;
+use Illuminate\Support\Arr;
 use Tests\TestCase;
 
 class PostControllerTest extends TestCase
@@ -32,6 +33,13 @@ class PostControllerTest extends TestCase
         $response = $this->get('posts/'.$post->slug);
 
         $response->assertStatus(200);
+        $this->assertEquals(
+            $post->title,
+            Arr::get($response->original->gatherData(), 'post')['title']
+        );
+        $this->assertEquals(
+            $post->description,
+            Arr::get($response->original->gatherData(), 'post')['description']);
         $response->assertViewIs('posts.show');
     }
 

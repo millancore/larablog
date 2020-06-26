@@ -25,7 +25,7 @@ class PostRepository implements PostRepositoryInterface
         $post->description = $data['description'];
         $post->slug = Str::slug($data['title'], '-');
         $post->user_id = $userId;
-        $post->publication_date = !isset($data['publication_date']) ?? Carbon::now();
+        $post->publication_date = $data['publication_date'] ?? Carbon::now();
 
         return $post->save();
     }
