@@ -63,6 +63,6 @@ docker-compose exec php-fpm php artisan test
 
 ## Know Issues
 
-Now validate that the post's title is unique, but the validation must be unique by user `unique:title,user_id` and add a route for the post detail type `posts/{user}/{slug}` 
+Now validate that the post's title is unique, but the validation must be unique by user `unique:title,user_id` and add a route for the post detail type `posts/{username}/{slug}` 
 
 # Thanks
