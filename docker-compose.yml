@@ -50,8 +50,6 @@ services:
     image: redis:alpine
     environment:
       REDIS_REPLICATION_MODE: master
-    volumes:
-     - ./data/redis:/var/lib/redis
     networks:
      - backend
 networks: 
