@@ -10,5 +10,5 @@ interface PostRepositoryInterface
 
     public function getBySlug(string $slug);
 
-    public function getAll(string $publicationOrder = 'desc');
+    public function getAll(string $publicationOrder);
 }

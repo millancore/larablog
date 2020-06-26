@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    <sort-component order="{{ $order }}" ></sort-component>
     <div class="row justify-content-left">
         @foreach ($posts as $post)
         <post-component class="w-25 mr-3" slug="{{ $post->slug }}">
@@ -13,7 +14,7 @@
     </div>
     <div>
         <pagination-component>
-            {{ $posts->links() }}
+            {{ $posts->appends(['order' => $order])->links() }}
         </pagination-component>
     </div>
 </div>

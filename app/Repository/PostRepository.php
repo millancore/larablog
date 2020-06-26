@@ -25,7 +25,7 @@ class PostRepository implements PostRepositoryInterface
         $post->description = $data['description'];
         $post->slug = Str::slug($data['title'], '-');
         $post->user_id = $userId;
-        $post->publication_date = !isset($data['publication_date']) ? Carbon::now() : $data['publication_date'];
+        $post->publication_date = !isset($data['publication_date']) ?? Carbon::now();
 
         return $post->save();
     }
@@ -60,7 +60,7 @@ class PostRepository implements PostRepositoryInterface
      * @param string $publicationOrder
      * @return void
      */
-    public function getAll(string $publicationOrder = 'desc')
+    public function getAll(string $publicationOrder)
     {
         return Post::orderBy('publication_date', $publicationOrder)
                     ->paginate(6);

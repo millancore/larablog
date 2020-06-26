@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('post-component', require('./components/PostComponent.vue').default);
 Vue.component('pagination-component', require('./components/PaginationComponent.vue').default);
+Vue.component('sort-component', require('./components/SortComponent.vue').default);
 
 
 /**

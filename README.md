@@ -10,7 +10,7 @@ This blog uses Laravel 7, I recommend to use the integrated Docker or in case yo
 
 ## Feed Server
 
-This project has a cron that brings the publications of another platform from time to time, by default it is set to 5 minutes for testing purposes, but it could be every 20 minutes so as not to saturate the services.
+This project has a cron that brings the publications of another platform from time to time, by default it is set to 5 minutes for testing purposes, but it could be every 20 minutes or more so as not to saturate the services.
 
 Also you can import the posts manually run
 
@@ -52,3 +52,5 @@ Open http://localhost:8000
 Admin login
    - Email: admin@squa.com
    - Pass: Squa123456
+
+Click user dropdown -> Home
