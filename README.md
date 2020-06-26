@@ -10,7 +10,13 @@ This blog uses Laravel 7, I recommend to use the integrated Docker or in case yo
 
 ## Feed Server
 
-This project has a cron that brings the publications of another platform from time to time, by default it is set to 2 minutes for testing purposes, but it could be every 20 minutes so as not to saturate the services. 
+This project has a cron that brings the publications of another platform from time to time, by default it is set to 5 minutes for testing purposes, but it could be every 20 minutes so as not to saturate the services.
+
+Also you can import the posts manually run
+
+```bash
+docker-compose exec php-fpm php artisan post:import
+```
 
 ## Cache
 This project use redis as cache server to minimize the impact on the data layer by ensuring service in cases of high data concurrency.  
